@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col">
+    <input #term autofocus type="text" (keyup)="search(term.value)" class="form-control" placeholder="search for an artist...">
+    Search term: {{ term.value }}
+  </div>
+</div>
+<ng-container *ngIf="results !== undefined">
+  <div class="card-columns">
+    <div class="card" *ngFor="let result of results">
+      <img [src]="result.images[0].url" *ngIf="result.images.length" class="card-img-top" alt="...">
+      <div class="card-body">
+        <span class="badge badge-primary">{{result.followers.total}} followers</span>
+        <h5 class="card-title">{{result.name}}</h5>
+        <button type="button" class="btn btn-primary mt-2">
+          <a [href]="result.external_urls.spotify" class="btn btn-primary btn-sm" target="_blank">See profile</a>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert alert-warning" role="alert" *ngIf="!results.length">
+    Nothing was found
+  </div>
+</ng-container>
+<div class="alert alert-info mt-2" role="alert" *ngIf="results === undefined">
+  Try searching an artist, album or song...
+</div>
