@@ -1,6 +1,15 @@
 <div class="row">
   <div class="col">
-    <input #term autofocus type="text" (keyup)="search(term.value)" class="form-control" placeholder="search for an artist...">
+    <input #term autofocus type="text" (keyup)="search(term.value)" class="form-control"
+           placeholder="search for an artist, track, album, playlist...">
+    <select class="mt-2" [(ngModel)]="filter">
+      <option selected value="0">Artist</option>
+      <option value="1">Track</option>
+      <option value="2">Album</option>
+      <option value="3">Playlist</option>
+    </select>
+    <br>
+    <br>
     Search term: {{ term.value }}
   </div>
 </div>

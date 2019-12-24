@@ -8,6 +8,7 @@ import {ArtistaComponent} from './components/artista/artista.component';
 import {NavbarComponent} from './components/shared/navbar/navbar.component';
 import {SearchComponent} from './components/search/search.component';
 import {HttpClientModule} from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

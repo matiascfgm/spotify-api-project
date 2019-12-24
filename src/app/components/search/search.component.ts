@@ -8,6 +8,7 @@ import {SpotifyService} from '../../services/spotify.service';
 })
 export class SearchComponent implements OnInit {
   public term = 'Try searching an artist, album, song...';
+  public filter = 0;
   public results: any[];
 
   constructor(private spotify: SpotifyService) {
@@ -22,7 +23,7 @@ export class SearchComponent implements OnInit {
       return;
     }
     this.term = term;
-    this.spotify.search(term)
+    this.spotify.search(term, this.filter)
       .subscribe((data: any) => {
         console.log(data);
         this.results = data;
