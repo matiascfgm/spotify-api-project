@@ -1,6 +1,6 @@
 <div class="card-columns">
   <div class="card" *ngFor="let result of results">
-    <img *ngIf="result.images.length; else noImage" [src]="result.images[1].url" class="card-img-top" alt="...">
+    <img *ngIf="result.images.length > 1; else noImage" [src]="result.images[0].url" class="card-img-top" alt="...">
     <ng-template #noImage><img
       src="https://matthewsenvironmentalsolutions.com/images/com_hikashop/upload/not-available.png"
       class="card-img-top"></ng-template>

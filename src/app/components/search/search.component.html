@@ -8,6 +8,13 @@
       <option value="2">Album</option>
       <option value="3">Playlist</option>
     </select>
+
+    <select class="mt-2 ml-2" [(ngModel)]="quantity" (ngModelChange)="search(term.value)">
+      <option selected value="5">5 results</option>
+      <option value="10">10 results</option>
+      <option value="25">25 results</option>
+      <option value="50">50 results</option>
+    </select>
     <br>
     <br>
     Showing results for: <b>{{ term.value }}</b>

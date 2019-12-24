@@ -11,6 +11,7 @@ export class SearchComponent implements OnInit {
   searchType = ['Artists', 'Tracks', 'Albums', 'Playlists'];
   public filter = 0;
   public results: any[];
+  quantity = 5;
 
   constructor(private spotify: SpotifyService) {
   }
@@ -24,7 +25,7 @@ export class SearchComponent implements OnInit {
       return;
     }
     this.term = term;
-    this.spotify.search(term, this.filter)
+    this.spotify.search(term, this.filter, this.quantity)
       .subscribe((data: any) => {
         console.log(data);
         this.results = data;

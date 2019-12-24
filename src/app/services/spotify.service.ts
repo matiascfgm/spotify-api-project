@@ -12,7 +12,7 @@ export class SpotifyService {
 
   public apiCall(query: string) {
     const headers = new HttpHeaders({
-      Authorization: 'Bearer BQBqrV4v8fJYAB9b0ZmJnM86EFPVtBFvNfTzE5xvUcO_gj8h1l33EIUm4Mozme3o_hoSnMqFbUVRt7eZJBZiMmHklyc0_gJtwdSsViiByweV6Uyc0s_gDr5KsAqrJNlJRZoMmEmua1J259mhUl_tWk4mDbQLWy8',
+      Authorization: 'Bearer BQD-AAT1qFWzwRAPb7_4BmyKe5fbVQ0T1oPkCWMgEpL5oGzExYtQYITdEJNSIHcy0V4qpvfr8ZCmTdaFWDc',
     });
     const URL = 'https://api.spotify.com/v1/' + query;
     return this.http.get(URL, {headers});
@@ -25,10 +25,11 @@ export class SpotifyService {
       }));
   }
 
-  public search(term: string, filter: number) {
+  public search(term: string, filter: number, quantity: number) {
+    console.log('-----> ',quantity)
     const searchType = ['artist', 'track', 'album', 'playlist'];
     const result = searchType[filter] + 's';
-    const query = 'search?q=' + term + '&type=' + searchType[filter] + '&limit=7';
+    const query = 'search?q=' + term + '&type=' + searchType[filter] + '&limit=' + quantity;
     return this.apiCall(query)
       .pipe(map((data: any) => {
         return data[result].items;
