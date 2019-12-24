@@ -1,0 +1,17 @@
+<div class="card-columns">
+  <div class="card" *ngFor="let result of results">
+    <img *ngIf="result.images.length; else noImage" [src]="result.images[1].url" class="card-img-top" alt="...">
+    <ng-template #noImage><img
+      src="https://matthewsenvironmentalsolutions.com/images/com_hikashop/upload/not-available.png"
+      class="card-img-top"></ng-template>
+    <div class="card-body">
+      <span class="badge badge-pill badge-info" *ngFor="let artist of result.artists">{{artist.name}}</span><br>
+      <h5 class="card-title">{{result.name}}</h5>
+      <p class="card-text">Release date:<br> {{result.release_date}}</p>
+      <p class="card-text">Number of songs: {{result.total_tracks}}</p>
+      <button type="button" class="btn btn-primary mt-2">
+        <a [href]="result.external_urls.spotify" class="btn btn-primary btn-sm" target="_blank">See album</a>
+      </button>
+    </div>
+  </div>
+</div>

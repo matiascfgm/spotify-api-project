@@ -8,6 +8,7 @@ import {SpotifyService} from '../../services/spotify.service';
 })
 export class SearchComponent implements OnInit {
   public term = 'Try searching an artist, album, song...';
+  searchType = ['Artists', 'Tracks', 'Albums', 'Playlists'];
   public filter = 0;
   public results: any[];
 

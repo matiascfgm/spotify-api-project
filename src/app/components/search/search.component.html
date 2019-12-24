@@ -2,7 +2,7 @@
   <div class="col">
     <input #term autofocus type="text" (keyup)="search(term.value)" class="form-control"
            placeholder="search for an artist, track, album, playlist...">
-    <select class="mt-2" [(ngModel)]="filter">
+    <select class="mt-2" [(ngModel)]="filter" (ngModelChange)="search(term.value)">
       <option selected value="0">Artist</option>
       <option value="1">Track</option>
       <option value="2">Album</option>
@@ -10,27 +10,29 @@
     </select>
     <br>
     <br>
-    Search term: {{ term.value }}
+    Showing results for: <b>{{ term.value }}</b>
   </div>
 </div>
-<ng-container *ngIf="results !== undefined">
-  <div class="card-columns">
-    <div class="card" *ngFor="let result of results">
-      <img [src]="result.images[0].url" *ngIf="result.images.length" class="card-img-top" alt="...">
-      <div class="card-body">
-        <span class="badge badge-primary">{{result.followers.total}} followers</span>
-        <h5 class="card-title">{{result.name}}</h5>
-        <button type="button" class="btn btn-primary mt-2">
-          <a [href]="result.external_urls.spotify" class="btn btn-primary btn-sm" target="_blank">See profile</a>
-        </button>
-      </div>
-    </div>
-  </div>
+<hr>
+<h1>{{searchType[filter]}}</h1>
+<ng-container *ngIf="results !== undefined && results.length">
+  <app-artist-card *ngIf="filter == 0" [results]=results>
+  </app-artist-card>
 
-  <div class="alert alert-warning" role="alert" *ngIf="!results.length">
-    Nothing was found
-  </div>
+  <app-track-card *ngIf="filter == 1" [results]=results>
+  </app-track-card>
+
+  <app-album-card *ngIf="filter == 2" [results]=results>
+  </app-album-card>
+
+  <app-playlist-card *ngIf="filter == 3" [results]=results>
+  </app-playlist-card>
 </ng-container>
+
+
 <div class="alert alert-info mt-2" role="alert" *ngIf="results === undefined">
   Try searching an artist, album or song...
+</div>
+<div class="alert alert-warning mt-2" role="alert" *ngIf="results && !results.length">
+  No results for the search.
 </div>
