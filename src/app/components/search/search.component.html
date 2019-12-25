@@ -22,6 +22,7 @@
 </div>
 <hr>
 <h1>{{searchType[filter]}}</h1>
+<app-loader *ngIf="loading"></app-loader>
 <ng-container *ngIf="results !== undefined && results.length">
   <app-artist-card *ngIf="filter == 0" [results]=results>
   </app-artist-card>
@@ -37,7 +38,7 @@
 </ng-container>
 
 
-<div class="alert alert-info mt-2" role="alert" *ngIf="results === undefined">
+<div class="alert alert-info mt-2" role="alert" *ngIf="results === undefined && !loading">
   Try searching an artist, album or song...
 </div>
 <div class="alert alert-warning mt-2" role="alert" *ngIf="results && !results.length">

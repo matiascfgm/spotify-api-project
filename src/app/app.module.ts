@@ -13,6 +13,8 @@ import { ArtistCardComponent } from './components/templates/artist-card/artist-c
 import { TrackCardComponent } from './components/templates/track-card/track-card.component';
 import { AlbumCardComponent } from './components/templates/album-card/album-card.component';
 import { PlaylistCardComponent } from './components/templates/playlist-card/playlist-card.component';
+import { NoimagePipe } from './pipes/noimage.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { PlaylistCardComponent } from './components/templates/playlist-card/play
     TrackCardComponent,
     AlbumCardComponent,
     PlaylistCardComponent,
+    NoimagePipe,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
